@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: solve-the-case
+    runtime: static
+    buildCommand: "echo 'No build step required'"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
