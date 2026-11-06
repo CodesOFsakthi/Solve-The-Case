@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Last Unopened File: Case 1106</title>
+<title>The Last Unopened File: Case 1107</title>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -53,7 +53,7 @@ input{font:inherit;background:#000;color:#e8b04a;border:1px solid #e8b04a;paddin
 // ===== CONFIG: edit freely =====
 const CFG={
  VIDEO_PATH:'video/input.mp4', // <- put your video here (file next to this html, or a full URL)
- codes:{pc:'1415',capC:'0411',door3:'1106',box:'3142',vault:'9472'},
+ codes:{pc:'1415',capC:'0411',door3:'1107',box:'3142',vault:'9472'},
  route:['Records Chamber (04)','Investigation Office (01)','Evidence Archive (02)','Interrogation Room (03)'],
  hints:{
   0:['The note talks about a clock. Look at the wall clock closely.','The clock stopped in the afternoon. Use 24-hour time: 14:15.','The spare key is in the filing cabinet. Select it from the inventory, then click the desk.','Use the archive card on the door at the right.'],
@@ -61,7 +61,7 @@ const CFG={
   2:['Open the statements on the table and check each claim against your journal.','Three claims are true and three are not. The tape plays once the review is correct.','The door keypad wants the case number.'],
   3:['The Gate PC and the wall log disagree. Find the offset between them.','Order the event cards by real time. The tab numbers in order are the box code.','The map shows the route the subjects walked.'],
   4:['Each room kept one digit. The board shows what you have.','The map from the Records Chamber gives the order of the digits.','Walk the route: Records, Office, Archive, Interrogation.']},
- brief:['<b>What happened.</b> On 11 June, the Meridian Reel, a single film canister logged in the archive as artifact 1106, vanished from a sealed vault. No alarms. No forced locks. Every door was opened with a valid badge.',
+ brief:['<b>What happened.</b> On 11 June, the Meridian Reel, a single film canister logged in the archive as artifact 1107, vanished from a sealed vault. No alarms. No forced locks. Every door was opened with a valid badge.',
   '<b>What is known.</b> Two people, referred to only as Subject Alpha and Subject Beta, badged in that night. Their paperwork is real, their faces are cropped out of every photograph, and their statements do not agree.',
   '<b>What is unknown.</b> Who they are, why they took it, and what is on the reel. Every record about it was filed in a way that only makes sense in the right order.',
   '<b>Why reopened.</b> This morning, a new envelope arrived at the cold case desk with your name on it and one line: "Start at the office."',
@@ -71,7 +71,7 @@ const ITEMS={key:['Brass key','🗝️'],card:['Archive card','💳'],uv:['UV la
 const EV={note:['Handwritten note','The code is the hour the clock gave up. 24-hour time.'],clock:['Wall clock','Stopped at 2:15 in the afternoon. Brass plate: PM.'],pcdoc:['Subject Alpha file','Badge out 21:10. Spare key in the filing cabinet, bottom drawer.'],photo:['Photograph','Two figures, faces cropped. Back: print no. 4. (Fragment: 4)'],drawer:['Desk drawer','Archive card and a UV lamp.'],pA:['Profile: Alpha (the Courier)','Statement: "I never went near the archive." Hidden date under UV: filed on 04.'],pB:['Profile: Beta (the Hare)','Statement: "I filed both profiles myself." Hidden date under UV: filed on 11.'],torn:['Torn pages','Cabinet C opens with the day Alpha was filed, then the day Beta was filed.'],capC:['Conflicting records','Gate log: Alpha badged into the archive that night. Beta badged out before Alpha. Ledger no. 7. (Fragment: 7)'],tape:['Cassette','Side 2. "Our case number opens the next door." (Fragment: 2)'],mirror:['One-way mirror','Scratched into the glass: "We watched you arrive."'],off:['Clock offset','The Gate PC runs 20 minutes fast. The wall log is accurate.'],tl:['Timeline','Real order: Alpha in, camera off, Beta out, reel leaves. Tabs: 3, 1, 4, 2.'],map:['Map: The Walk','Route: Records (04) then Office (01) then Archive (02) then Interrogation (03).'],box:['Metal box','Vault pass. Note: "Four stops, four digits." (Fragment: 9)'],vault:['Vault opened','The black box was waiting inside.']};
 const FL=['pc','key','drawer','d12','uvA','uvB','torn','capC','st','d23','d34','off','tl','box','d45','vault','done'];
 // ===== STATE =====
-const K='case1106',mem={};let S;
+const K='case1107',mem={};let S;
 const ld=()=>{try{return JSON.parse(localStorage.getItem(K))}catch(e){return mem.s||null}};
 const sv=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){mem.s=S}};
 const $=s=>document.querySelector(s);
@@ -193,20 +193,20 @@ function stm(){const c=[['a1','I left the office at 21:10.'],['a2','I never set 
   if(t.id=='go'){const w=c.filter(([k])=>mk[k]===undefined||(mk[k]==1)!=!!tr[k]).length;if(!w){fl('st','Statements verified');ev('mirror');toast('All six verdicts hold up. The recorder is free.');cl()}else{bad(b);toast(w+' verdict(s) wrong or missing.')}}}})}
 let seen={};
 function bb(){seen={};const R=b=>{b.innerHTML=`<p>The box is lined with felt. Three things inside.</p><p><button class="b g" data-i=p>Photograph</button> <button class="b g" data-i=r>Classified report</button> <button class="b g" data-i=u>USB drive</button></p><div id=v></div>${seen.p&&seen.r&&seen.u?'<p><button class=b data-i=go>Plug in the USB</button></p>':''}`;
- const v=b.querySelector('#v'),i=b.dataset.s;v.innerHTML=i=='p'?paper(`A warm photograph: two silhouettes laughing over a cake.<br>On the back: "Happy birthday, ${S.name}. We hid it well, didn't we?"`):i=='r'?paper(`<b>CLASSIFIED REPORT: FINAL FINDINGS</b><br>Subject Alpha (the Courier) and Subject Beta (the Hare) were never suspects. They were the authors of Case 1106.<br>The missing artifact, the Meridian Reel, is a personal birthday video made for ${S.name}.<br>The contradictions were clues they planted to see how far you would go.`):i=='u'?paper(`Label: "FOR ${S.name.toUpperCase()}. PLAY ME."`):''};
+ const v=b.querySelector('#v'),i=b.dataset.s;v.innerHTML=i=='p'?paper(`A warm photograph: two silhouettes laughing over a cake.<br>On the back: "Happy birthday, ${S.name}. We hid it well, didn't we?"`):i=='r'?paper(`<b>CLASSIFIED REPORT: FINAL FINDINGS</b><br>Subject Alpha (the Courier) and Subject Beta (the Hare) were never suspects. They were the authors of Case 1107.<br>The missing artifact, the Meridian Reel, is a personal birthday video made for ${S.name}.<br>The contradictions were clues they planted to see how far you would go.`):i=='u'?paper(`Label: "FOR ${S.name.toUpperCase()}. PLAY ME."`):''};
  mod('The black box','',b=>{R(b);b.onclick=e=>{const k=e.target.dataset.i;if(!k)return;if(k=='go')return fin();seen[k]=1;b.dataset.s=k;R(b)}})}
 function fin(){cl();fl('done','Case closed');const f=document.createElement('div');f.className='fin';
- f.innerHTML=`<h1>Happy Birthday, ${S.name}.</h1><p>Case 1106 is closed. The artifact was never stolen. It was made for you.</p><video id=vd controls playsinline preload=metadata src="${CFG.VIDEO_PATH}"></video><p id=nv style="display:none">Video not found at "${CFG.VIDEO_PATH}". Set VIDEO_PATH at the top of this file.</p><p><button class=b id=bk>Back to the vault</button></p>`;
+ f.innerHTML=`<h1>Happy Birthday, ${S.name}.</h1><p>Case 1107 is closed. The artifact was never stolen. It was made for you.</p><video id=vd controls playsinline preload=metadata src="${CFG.VIDEO_PATH}"></video><p id=nv style="display:none">Video not found at "${CFG.VIDEO_PATH}". Set VIDEO_PATH at the top of this file.</p><p><button class=b id=bk>Back to the vault</button></p>`;
  document.body.append(f);setTimeout(()=>{for(let i=0;i<40;i++){const c=document.createElement('div');c.className='cf';c.textContent=['🎉','✨','🎂','💛'][i%4];c.style.cssText=`left:${Math.random()*100}vw;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*2}s`;document.body.append(c);setTimeout(()=>c.remove(),9000)}},2500);
  f.querySelector('#vd').onerror=()=>{f.querySelector('#vd').style.display='none';f.querySelector('#nv').style.display='block'};f.querySelector('#bk').onclick=()=>f.remove()}
 // ===== SCREENS =====
 function typeIn(el,lines,cb){let i=0,j=0;const t=setInterval(()=>{if(i>=lines.length){clearInterval(t);cb&&cb();return}j++;el.textContent=lines.slice(0,i).join('\n')+(i?'\n':'')+lines[i].slice(0,j);if(j>=lines[i].length){i++;j=0}},18)}
 function reg(){$('#app').innerHTML='<div class=term><pre id=ty></pre><form id=f style="display:none"><span>&gt; FULL NAME: </span><input id=nm maxlength=32 autocomplete=off required> <button class=b>ENTER</button></form></div>';
- typeIn($('#ty'),['CLASSIFIED CASE SYSTEM v4.1','CASE 1106: THE LAST UNOPENED FILE','Connection secure. Identity required.',''],()=>{$('#f').style.display='block';$('#nm').focus()});
+ typeIn($('#ty'),['CLASSIFIED CASE SYSTEM v4.1','CASE 1107: THE LAST UNOPENED FILE','Connection secure. Identity required.',''],()=>{$('#f').style.display='block';$('#nm').focus()});
  $('#f').onsubmit=e=>{e.preventDefault();const n=$('#nm').value.trim().replace(/[<>&"]/g,'');if(!n)return;let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%9000;
   S={name:n,id:'INV-'+n.split(/\s+/).map(w=>w[0]).join('').toUpperCase().slice(0,3)+'-'+(h+1000),stage:'card',room:0,inv:[],sel:null,f:{},j:[],h:{}};sv();card()}}
-function card(){$('#app').innerHTML=`<div class=wrap><pre>IDENTITY CONFIRMED. PROFILE GENERATED.</pre><div class=idc><div class=ph>🕵️</div><div><b>COLD CASE UNIT</b><br>Name: ${S.name}<br>ID: ${S.id}<br>Rank: Senior Investigator<br>Clearance: LEVEL 4<br>Assignment: Case 1106</div></div><button class=b id=nx>Open classified briefing</button></div>`;$('#nx').onclick=brief}
-function brief(){S.stage='brief';sv();$('#app').innerHTML=`<div class=wrap><pre>TOP SECRET // CASE 1106 // EYES ONLY</pre><div class=paper><b>To: Investigator ${S.name} (${S.id})</b> <span class=stamp>CLASSIFIED</span>${CFG.brief.map((t,i)=>`<p class=p style="animation-delay:${i*1.2}s">${t}</p>`).join('')}</div><p><button class=b id=bg>Begin the investigation</button></p></div>`;$('#bg').onclick=()=>{S.stage='game';sv();game()}}
+function card(){$('#app').innerHTML=`<div class=wrap><pre>IDENTITY CONFIRMED. PROFILE GENERATED.</pre><div class=idc><div class=ph>🕵️</div><div><b>COLD CASE UNIT</b><br>Name: ${S.name}<br>ID: ${S.id}<br>Rank: Senior Investigator<br>Clearance: LEVEL 4<br>Assignment: Case 1107</div></div><button class=b id=nx>Open classified briefing</button></div>`;$('#nx').onclick=brief}
+function brief(){S.stage='brief';sv();$('#app').innerHTML=`<div class=wrap><pre>TOP SECRET // CASE 1107 // EYES ONLY</pre><div class=paper><b>To: Investigator ${S.name} (${S.id})</b> <span class=stamp>CLASSIFIED</span>${CFG.brief.map((t,i)=>`<p class=p style="animation-delay:${i*1.2}s">${t}</p>`).join('')}</div><p><button class=b id=bg>Begin the investigation</button></p></div>`;$('#bg').onclick=()=>{S.stage='game';sv();game()}}
 function game(){$('#app').innerHTML='<div id=hud></div><div id=st></div><div id=inv></div>';const st=$('#st');
  st.onmousemove=e=>{const b=st.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;st.style.setProperty('--mx',x*100+'%');st.style.setProperty('--my',y*100+'%');const s=st.querySelector('svg');if(s)s.style.transform=`translate(${(.5-x)*14}px,${(.5-y)*8}px)`};
  st.onclick=e=>{const g=e.target.closest('.h');if(g)click(g.dataset.o)};up();if(!S.j.length)toast('Start at the office, as the envelope said.')}
