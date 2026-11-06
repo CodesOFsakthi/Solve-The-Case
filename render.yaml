@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: case-1106
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
