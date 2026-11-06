@@ -1,6 +1,7 @@
+
 services:
   - type: web
-    name: case-1106
+    name: solve-the-case
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
