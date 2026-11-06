@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Last Unopened File: Case 1106</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07080a;color:#e9dcc0;font:16px/1.5 'Special Elite','Courier New',monospace;min-height:100vh}
+button{font:inherit;cursor:pointer}
+.b{background:#e8b04a;color:#1a1208;border:0;padding:8px 16px;border-radius:3px;font-weight:700}
+.b:hover{background:#ffc766}.g{background:#2a2d33;color:#e9dcc0}
+.term,.wrap{max-width:720px;margin:6vh auto;padding:20px}
+pre{white-space:pre-wrap;color:#e8b04a;margin:0 0 16px}
+input{font:inherit;background:#000;color:#e8b04a;border:1px solid #e8b04a;padding:8px;width:min(320px,70%)}
+.idc{background:linear-gradient(135deg,#cfc6a8,#a89f84);color:#2a2012;border-radius:10px;padding:18px;display:flex;gap:16px;margin:16px 0;box-shadow:0 8px 30px #000a;animation:in .8s}
+.idc .ph{width:84px;height:104px;background:#5b5a52;border-radius:4px;display:grid;place-items:center;font-size:44px}
+.bar{height:6px;background:#222;border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;background:#e8b04a;transition:width .6s}
+.paper{background:#e9dcc0;color:#2a2012;padding:16px;border-radius:2px;box-shadow:0 4px 18px #0008;font-size:15px;transition:transform .3s}
+.paper.z{transform:scale(1.18)}.paper.uv{background:#1a2030;color:#cfe}
+.hid{opacity:0}.uv .hid{opacity:1;color:#7df;font-weight:700;text-shadow:0 0 8px #7df}
+.stamp{color:#b3382c;border:2px solid #b3382c;padding:0 6px;transform:rotate(-6deg);display:inline-block;font-weight:700}
+.p{opacity:0;animation:in .9s forwards}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#hud{display:flex;gap:10px;align-items:center;padding:8px 12px;background:#0d0f12;border-bottom:1px solid #2a2d33;flex-wrap:wrap;font-size:13px}
+#hud .bar{flex:1;min-width:80px}
+#st{position:relative;max-width:1000px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;background:#000;cursor:crosshair}
+#st svg{width:106%;height:106%;margin:-3% 0 0 -3%;display:block;transition:transform .15s}
+#st:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle 260px at var(--mx,50%) var(--my,50%),transparent 0,rgba(0,0,0,.72) 100%)}
+.h{cursor:pointer}.h:hover{filter:brightness(1.4) drop-shadow(0 0 6px #e8b04a)}
+#inv{display:flex;gap:8px;padding:8px 12px;max-width:1000px;margin:0 auto;min-height:52px;align-items:center;flex-wrap:wrap;font-size:13px}
+.it{background:#1b1e24;border:1px solid #444;color:#e9dcc0;padding:6px 10px;border-radius:4px}.it.on{border-color:#e8b04a;box-shadow:0 0 10px #e8b04a88}
+.m{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:20;padding:10px;overflow:auto}
+.m.on{display:grid}.mc{background:#14161b;border:1px solid #e8b04a66;border-radius:8px;padding:18px;width:min(620px,100%);max-height:94vh;overflow:auto;position:relative;animation:in .3s}
+.mc h3{margin:0 0 10px;color:#e8b04a}.x{position:absolute;right:10px;top:10px;background:none;border:0;color:#e9dcc0;font-size:20px}
+.disp{font-size:34px;letter-spacing:10px;text-align:center;background:#000;color:#7f7;padding:8px;margin-bottom:10px;border-radius:4px}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:260px;margin:auto}.pad button{padding:12px;background:#2a2d33;color:#e9dcc0;border:0;border-radius:4px;font-size:18px}
+.shake{animation:sh .4s}@keyframes sh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.sl,.pool{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.slot{min-width:110px;min-height:56px;border:2px dashed #666;border-radius:4px;display:grid;place-items:center;flex:1;color:#666}
+.card{background:#e9dcc0;color:#2a2012;padding:8px;border-radius:3px;cursor:grab;font-size:13px;flex:1;min-width:110px}.card.sel{outline:3px solid #e8b04a}
+.cl{display:flex;gap:8px;align-items:center;justify-content:space-between;border-bottom:1px solid #333;padding:6px 0}
+.cl button{padding:4px 10px;border:1px solid #666;background:#222;color:#e9dcc0}.cl button.y{background:#2d6a3a}.cl button.n{background:#8a2c2c}
+#t{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:40;display:flex;flex-direction:column;gap:6px;align-items:center;pointer-events:none}
+.ts{background:#e8b04a;color:#1a1208;padding:6px 14px;border-radius:4px;animation:in .3s;max-width:90vw}
+.ac{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#e8b04a,#fff2c0);color:#1a1208;padding:10px 24px;border-radius:30px;z-index:50;font-weight:700;animation:ac 3.2s forwards;box-shadow:0 0 40px #e8b04a}
+@keyframes ac{0%{top:-60px}12%,80%{top:14px}100%{top:-60px}}
+.fin{position:fixed;inset:0;z-index:60;overflow:auto;text-align:center;padding:5vh 12px;background:#000;animation:warm 5s forwards}
+@keyframes warm{0%{background:#000}100%{background:radial-gradient(circle at 50% 20%,#ffe3a8,#f4a261 55%,#c0593b)}}
+.fin h1{font-size:clamp(26px,6vw,54px);color:#3a1a0c;margin:10px;animation:in 3s 2s backwards}
+.fin p{color:#3a1a0c}.fin video{width:min(760px,96%);background:#000;border-radius:10px;box-shadow:0 10px 50px #0006}
+.cf{position:fixed;top:-30px;font-size:24px;animation:fall linear forwards;z-index:61;pointer-events:none}@keyframes fall{to{transform:translateY(110vh) rotate(500deg)}}
+</style></head><body>
+<div id="app"></div><div class="m" id="m"></div><div id="t"></div>
+<script>
+// ===== CONFIG: edit freely =====
+const CFG={
+ VIDEO_PATH:'video/input.mp4', // <- put your video here (file next to this html, or a full URL)
+ codes:{pc:'1415',capC:'0411',door3:'1106',box:'3142',vault:'9472'},
+ route:['Records Chamber (04)','Investigation Office (01)','Evidence Archive (02)','Interrogation Room (03)'],
+ hints:{
+  0:['The note talks about a clock. Look at the wall clock closely.','The clock stopped in the afternoon. Use 24-hour time: 14:15.','The spare key is in the filing cabinet. Select it from the inventory, then click the desk.','Use the archive card on the door at the right.'],
+  1:['Open cabinets A and B. Flip each profile over.','Hidden ink needs the UV lamp from the desk drawer.','Assemble the torn pages, then open cabinet C with the code they spell out.'],
+  2:['Open the statements on the table and check each claim against your journal.','Three claims are true and three are not. The tape plays once the review is correct.','The door keypad wants the case number.'],
+  3:['The Gate PC and the wall log disagree. Find the offset between them.','Order the event cards by real time. The tab numbers in order are the box code.','The map shows the route the subjects walked.'],
+  4:['Each room kept one digit. The board shows what you have.','The map from the Records Chamber gives the order of the digits.','Walk the route: Records, Office, Archive, Interrogation.']},
+ brief:['<b>What happened.</b> On 11 June, the Meridian Reel, a single film canister logged in the archive as artifact 1106, vanished from a sealed vault. No alarms. No forced locks. Every door was opened with a valid badge.',
+  '<b>What is known.</b> Two people, referred to only as Subject Alpha and Subject Beta, badged in that night. Their paperwork is real, their faces are cropped out of every photograph, and their statements do not agree.',
+  '<b>What is unknown.</b> Who they are, why they took it, and what is on the reel. Every record about it was filed in a way that only makes sense in the right order.',
+  '<b>Why reopened.</b> This morning, a new envelope arrived at the cold case desk with your name on it and one line: "Start at the office."',
+  '<b>Your task.</b> Search five rooms, collect evidence, expose the contradictions and open the restricted vault.']
+};
+const ITEMS={key:['Brass key','🗝️'],card:['Archive card','💳'],uv:['UV lamp','🔦'],ikey:['Interrogation key','🔑'],vpass:['Vault pass','🪪']};
+const EV={note:['Handwritten note','The code is the hour the clock gave up. 24-hour time.'],clock:['Wall clock','Stopped at 2:15 in the afternoon. Brass plate: PM.'],pcdoc:['Subject Alpha file','Badge out 21:10. Spare key in the filing cabinet, bottom drawer.'],photo:['Photograph','Two figures, faces cropped. Back: print no. 4. (Fragment: 4)'],drawer:['Desk drawer','Archive card and a UV lamp.'],pA:['Profile: Alpha (the Courier)','Statement: "I never went near the archive." Hidden date under UV: filed on 04.'],pB:['Profile: Beta (the Hare)','Statement: "I filed both profiles myself." Hidden date under UV: filed on 11.'],torn:['Torn pages','Cabinet C opens with the day Alpha was filed, then the day Beta was filed.'],capC:['Conflicting records','Gate log: Alpha badged into the archive that night. Beta badged out before Alpha. Ledger no. 7. (Fragment: 7)'],tape:['Cassette','Side 2. "Our case number opens the next door." (Fragment: 2)'],mirror:['One-way mirror','Scratched into the glass: "We watched you arrive."'],off:['Clock offset','The Gate PC runs 20 minutes fast. The wall log is accurate.'],tl:['Timeline','Real order: Alpha in, camera off, Beta out, reel leaves. Tabs: 3, 1, 4, 2.'],map:['Map: The Walk','Route: Records (04) then Office (01) then Archive (02) then Interrogation (03).'],box:['Metal box','Vault pass. Note: "Four stops, four digits." (Fragment: 9)'],vault:['Vault opened','The black box was waiting inside.']};
+const FL=['pc','key','drawer','d12','uvA','uvB','torn','capC','st','d23','d34','off','tl','box','d45','vault','done'];
+// ===== STATE =====
+const K='case1106',mem={};let S;
+const ld=()=>{try{return JSON.parse(localStorage.getItem(K))}catch(e){return mem.s||null}};
+const sv=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){mem.s=S}};
+const $=s=>document.querySelector(s);
+const toast=m=>{const d=document.createElement('div');d.className='ts';d.textContent=m;$('#t').append(d);setTimeout(()=>d.remove(),2800)};
+const ach=m=>{const d=document.createElement('div');d.className='ac';d.textContent='★ '+m;document.body.append(d);setTimeout(()=>d.remove(),3300)};
+const bad=el=>{el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');toast('That is not right.')};
+const give=i=>{if(!S.inv.includes(i)){S.inv.push(i);toast('Collected: '+ITEMS[i][0]);sv();up()}};
+const ev=i=>{if(!S.j.includes(i)){S.j.push(i);sv()}};
+const fl=(k,a)=>{if(!S.f[k]){S.f[k]=1;sv();up();if(a)ach(a)}};
+const mod=(t,h,mt)=>{const m=$('#m');m.innerHTML=`<div class=mc><button class=x aria-label=Close>✕</button><h3>${t}</h3><div id=mb>${h}</div></div>`;m.classList.add('on');m.onclick=e=>{if(e.target==m||e.target.className=='x')cl()};if(mt)mt($('#mb'))};
+const cl=()=>{$('#m').classList.remove('on');up()};
+addEventListener('keydown',e=>{if(e.key=='Escape')cl()});
+const paper=h=>`<div class=paper>${h}</div>`;
+// keypad
+function kp(box,code,ok){let v='';const R=()=>{box.innerHTML=`<div class=disp>${(v+'····').slice(0,code.length)}</div><div class=pad>${'1234567890'.split('').map(d=>`<button>${d}</button>`).join('')}<button data-c=1>⌫</button><button data-e=1>OK</button></div>`};
+ box.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.c)v=v.slice(0,-1);else if(b.dataset.e){if(v==code)ok();else{v='';bad(box)}}else if(v.length<code.length)v+=b.textContent;R()};R()}
+// drag/click ordering
+function ord(box,items,ans,done){let pool=[...items].sort(()=>Math.random()-.5),sl=ans.map(()=>null),sel=null;
+ const cd=(c,x='')=>`<div class="card ${sel==c.k?'sel':''}" draggable=true data-k="${c.k}" data-x="${x}">${c.h}</div>`;
+ const R=()=>{box.innerHTML='<div class=sl>'+sl.map((c,i)=>`<div class=slot data-i=${i}>${c?cd(c,'in'):i+1}</div>`).join('')+'</div><div class=pool>'+pool.map(c=>cd(c)).join('')+'</div><p><button class=b>Check order</button></p>'};
+ const place=i=>{if(!sel)return;const c=items.find(z=>z.k==sel);pool=pool.filter(z=>z!=c);sl=sl.map(z=>z==c?null:z);if(sl[i])pool.push(sl[i]);sl[i]=c;sel=null;R()};
+ box.onclick=e=>{const c=e.target.closest('.card'),s=e.target.closest('.slot');
+  if(e.target.closest('button')){sl.every((c,i)=>c&&c.k==ans[i])?done():bad(box);return}
+  if(c&&c.dataset.x){const z=items.find(z=>z.k==c.dataset.k);sl=sl.map(q=>q==z?null:q);pool.push(z);R();return}
+  if(c){sel=c.dataset.k;R();return}if(s)place(+s.dataset.i)};
+ box.ondragstart=e=>{const c=e.target.closest('.card');if(c)sel=c.dataset.k};box.ondragover=e=>e.preventDefault();
+ box.ondrop=e=>{const s=e.target.closest('.slot');if(s){e.preventDefault();place(+s.dataset.i)}};R()}
+// document viewer: flip, zoom, UV
+function docv(box,o){let fl_=0,z=0,uv=0;const R=()=>{box.innerHTML=`<div class="paper ${z?'z':''} ${uv?'uv':''}">${fl_?o.b:o.f}</div><p><button class="b g" data-a=f>Flip</button> <button class="b g" data-a=z>Zoom</button>${S.inv.includes('uv')?' <button class="b g" data-a=u>UV lamp</button>':''}</p>`};
+ box.onclick=e=>{const a=e.target.dataset.a;if(!a)return;if(a=='f'){fl_^=1;if(fl_&&o.onflip)o.onflip()}if(a=='z')z^=1;if(a=='u'){uv^=1;if(uv&&fl_&&o.onuv)o.onuv()}R()};R()}
+// ===== SCENE ART =====
+const r=(x,y,w,h,f,e='')=>`<rect x=${x} y=${y} width=${w} height=${h} fill="${f}" ${e}/>`;
+const bg=(a,b,g='#ffd27a')=>`<defs><linearGradient id=g x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color=${a} /><stop offset=1 stop-color=${b} /></linearGradient><radialGradient id=l><stop offset=0 stop-color="${g}" stop-opacity=.4 /><stop offset=1 stop-color="${g}" stop-opacity=0 /></radialGradient></defs>${r(0,0,800,330,'url(#g)')}${r(0,330,800,120,'#1b1511')}<ellipse cx=400 cy=60 rx=420 ry=160 fill=url(#l) />`;
+const door=(lk)=>()=>`${r(0,0,80,250,'#2b1d12')}${r(8,8,64,234,'#3a281a')}<circle cx=64 cy=130 r=5 fill=#c9a24b /><circle cx=40 cy=28 r=6 fill="${lk()?'#d33':'#3d6'}" />`;
+const lbl=(x,y,t)=>`<text x=${x} y=${y} fill=#e9dcc0 font-size=14 text-anchor=middle>${t}</text>`;
+const cab=(n,lk)=>()=>`${r(0,0,150,270,'#505a63')}${[0,1,2,3].map(i=>r(8,8+i*64,134,56,'#626d77')+r(60,30+i*64,30,6,'#999')).join('')}${r(52,100,46,22,'#222')}${lbl(75,117,n)}<circle cx=135 cy=20 r=5 fill="${lk()?'#d33':'#3d6'}" />`;
+const O=[
+ [0,'clock','Wall clock',340,50,80,80,()=>`<circle cx=40 cy=40 r=38 fill=#e8dcc0 stroke=#4a3520 stroke-width=5 /><path d="M40 40V14M40 40l15 15M40 6v6M40 68v6M6 40h6M68 40h6" stroke=#2a1b10 stroke-width=3 />`],
+ [0,'photo','Photograph',470,100,70,90,()=>`${r(0,0,70,90,'#5a3d22')}${r(6,6,58,78,'#b9ad92')}<circle cx=25 cy=44 r=9 fill=#4a4036 /><circle cx=47 cy=48 r=8 fill=#6a5d4d />${r(14,54,22,26,'#4a4036')}${r(38,56,18,24,'#6a5d4d')}`],
+ [0,'drawer','Desk with locked drawer',60,275,300,120,()=>`${r(0,0,300,14,'#6b4626')}${r(10,14,280,100,'#46301a')}${r(150,26,120,52,S.f.drawer?'#2a1a0c':'#5b3a1e')}<circle cx=210 cy=52 r=5 fill=#c9a24b />${r(20,26,100,52,'#523620')}`],
+ [0,'pc','Old computer',80,185,130,100,()=>`${r(0,0,130,90,'#cfc6a8')}${r(10,10,110,66,S.f.pc?'#12402a':'#0a110d')}<text x=20 y=48 fill="${S.f.pc?'#7f7':'#2a5'}" font-size=12>${S.f.pc?'> FILE OPEN':'> ENTER CODE'}</text>${r(50,90,30,10,'#999')}`],
+ [0,'note','Handwritten note',250,258,44,28,()=>`<g transform="rotate(-8)">${r(0,0,40,26,'#efe3c0')}${r(5,6,28,2,'#666')}${r(5,12,22,2,'#666')}${r(5,18,26,2,'#666')}</g>`],
+ [0,'cab1','Filing cabinet',560,185,110,210,()=>`${r(0,0,110,210,'#59626b')}${[0,1,2].map(i=>r(8,10+i*66,94,58,'#6c767f')+r(40,32+i*66,30,6,'#999')).join('')}`],
+ [0,'d1_2','Door to Evidence Archive',700,130,80,250,door(()=>!S.f.d12)],
+ [1,'d2_1','Back to Office',0,130,80,250,door(()=>0)],
+ [1,'cabA','Cabinet A',100,110,150,270,cab('A',()=>0)],
+ [1,'cabB','Cabinet B',280,110,150,270,cab('B',()=>0)],
+ [1,'cabC','Cabinet C',460,110,150,270,cab('C',()=>!S.f.capC)],
+ [1,'torn','Torn pages',640,300,60,50,()=>`${r(0,20,60,30,'#3a2a1a')}<g transform="rotate(-10)">${r(8,4,24,18,'#efe3c0')}</g><g transform="rotate(14)">${r(26,0,24,18,'#e3d5b0')}</g>`],
+ [1,'d2_3','Door to Interrogation Room',720,130,80,250,door(()=>!S.f.d23)],
+ [2,'d3_2','Back to Archive',0,130,80,250,door(()=>0)],
+ [2,'mirror','One-way mirror',300,40,200,130,()=>`${r(0,0,200,130,'#222')}${r(8,8,184,114,'#4a6272')}<path d="M8 122L90 8h30L38 122z" fill="#fff" opacity=.12 />`],
+ [2,'chair1','Chair',140,210,90,170,()=>`${r(10,0,60,90,'#4a3320')}${r(0,90,90,14,'#5b4028')}${r(8,104,8,66,'#3a2818')}${r(74,104,8,66,'#3a2818')}`],
+ [2,'chair2','Chair',590,210,90,170,()=>`${r(10,0,60,90,'#4a3320')}${r(0,90,90,14,'#5b4028')}${r(8,104,8,66,'#3a2818')}${r(74,104,8,66,'#3a2818')}`],
+ [2,'table','Table',260,260,280,110,()=>`${r(0,0,280,16,'#6b4626')}${r(14,16,10,94,'#3a2818')}${r(256,16,10,94,'#3a2818')}`],
+ [2,'rec','Cassette recorder',360,232,80,30,()=>`${r(0,0,80,30,'#262a2e')}<circle cx=22 cy=14 r=8 fill=#999 /><circle cx=58 cy=14 r=8 fill=#999 />`],
+ [2,'stA','Witness statement A',290,246,50,14,()=>r(0,0,50,14,'#efe3c0')],
+ [2,'stB','Witness statement B',460,246,50,14,()=>r(0,0,50,14,'#efe3c0')],
+ [2,'d3_4','Door to Records Chamber',720,130,80,250,door(()=>!S.f.d34)],
+ [3,'d4_3','Back to Interrogation',0,130,80,250,door(()=>0)],
+ [3,'gate','Computers',70,170,190,140,()=>`${r(0,0,90,70,'#cfc6a8')}${r(8,8,74,54,'#12402a')}${r(100,10,90,70,'#cfc6a8')}${r(108,18,74,54,'#12402a')}${r(0,100,190,12,'#555')}`],
+ [3,'board','Timeline board',280,50,250,150,()=>`${r(0,0,250,150,'#5a3d22')}${r(8,8,234,134,'#c9b78f')}${[0,1,2,3].map(i=>r(16+i*58,40,48,60,S.f.tl?'#efe3c0':'#e0d2aa')).join('')}`],
+ [3,'map','Map',570,60,130,100,()=>`${r(0,0,130,100,'#d9c9a0')}<path d="M20 70L50 30L85 60L110 25" stroke=#b3382c stroke-width=3 fill=none stroke-dasharray=5 />`],
+ [3,'mbox','Locked metal box',330,285,90,60,()=>`${r(-20,56,130,8,'#444')}${r(0,0,90,56,'#6a7078')}${r(40,20,10,14,S.f.box?'#3d6':'#d33')}`],
+ [3,'d4_5','Door to Restricted Vault',720,130,80,250,door(()=>!S.f.d45)],
+ [4,'d5_4','Back to Records',0,130,80,250,door(()=>0)],
+ [4,'drs','Numbered drawers',100,110,130,230,()=>`${r(0,0,130,230,'#4d555d')}${[1,2,3,4].map(i=>r(8,8+(i-1)*55,114,48,'#5f6872')+lbl(65,40+(i-1)*55,i)).join('')}`],
+ [4,'vdoor','Vault door',270,30,310,310,()=>S.f.vault?`${r(0,0,310,310,'#050505')}${r(10,10,290,290,'#14100c')}`:`<circle cx=155 cy=155 r=150 fill=#4d555d /><circle cx=155 cy=155 r=110 fill=#5f6872 stroke=#222 stroke-width=6 /><path d="M155 85v140M85 155h140" stroke=#222 stroke-width=14 /><circle cx=155 cy=155 r=22 fill=#c9a24b />`],
+ [4,'bbox','Black box',385,230,80,60,()=>`${r(0,0,80,60,'#0a0a0c','stroke="#e8b04a" stroke-width=2')}<circle cx=40 cy=30 r=6 fill=#e8b04a />`,()=>S.f.vault],
+ [4,'eboard','Evidence board',630,80,160,150,()=>`${r(0,0,160,150,'#5a3d22')}${r(8,8,144,134,'#9c8a62')}${r(18,18,40,50,'#efe3c0')}${r(100,24,40,50,'#efe3c0')}<path d="M38 40L120 50M38 40L70 120M120 50L70 120" stroke=#b3382c stroke-width=2 />${r(50,100,40,32,'#efe3c0')}`]
+];
+const RN=['Room 01: Investigation Office','Room 02: Evidence Archive','Room 03: Interrogation Room','Room 04: Records Chamber','Room 05: Restricted Vault'];
+const BG=[bg('#2a2f38','#171a20'),bg('#1f2a2a','#10171a','#9fe'),bg('#2b2227','#150f13','#f99'),bg('#1f2530','#0f131a','#8bf'),bg('#1a1a1c','#0a0a0b','#e8b04a')];
+// ===== ENGINE =====
+function scene(){const g=O.filter(o=>o[0]==S.room&&(!o[8]||o[8]()));
+ $('#st').innerHTML=`<svg viewBox="0 0 800 450" role=img aria-label="${RN[S.room]}">${BG[S.room]}${g.map(o=>`<g class=h data-o=${o[1]} transform="translate(${o[3]},${o[4]})"><title>${o[2]}</title>${o[7]()}<rect width=${o[5]} height=${o[6]} fill=transparent /></g>`).join('')}</svg>`}
+function up(){if(!S||S.stage!='game')return;const p=Math.round(FL.filter(k=>S.f[k]).length/FL.length*100);
+ $('#hud').innerHTML=`<b>${S.name}</b><span>${S.id}</span><span>${RN[S.room]}</span><div class=bar><i style="width:${p}%"></i></div><span>${p}%</span><button class="b g" onclick="jr()">Journal (${S.j.length})</button><button class="b g" onclick="hint()">Hint</button><button class="b g" onclick="newCase()">New case</button>`;
+ $('#inv').innerHTML='<span>Inventory:</span>'+(S.inv.map(i=>`<button class="it ${S.sel==i?'on':''}" onclick="selI('${i}')">${ITEMS[i][1]} ${ITEMS[i][0]}</button>`).join('')||'<i>empty</i>');scene()}
+const selI=i=>{S.sel=S.sel==i?null:i;up();if(S.sel)toast('Selected '+ITEMS[i][0]+'. Click an object to use it.')};
+const go=n=>{S.room=n;S.sel=null;sv();up()};
+const jr=()=>mod('Evidence journal',S.j.length?S.j.map(i=>`<p><b>${EV[i][0]}</b><br>${EV[i][1]}</p>`).join(''):'<p>Nothing yet. Inspect objects.</p>');
+const hint=()=>{const a=CFG.hints[S.room];S.h[S.room]=Math.min((S.h[S.room]||0)+1,a.length);sv();mod('Hints',a.slice(0,S.h[S.room]).map((t,i)=>`<p>${i+1}. ${t}</p>`).join('')+(S.h[S.room]<a.length?'<p><button class=b onclick=hint()>Another hint</button></p>':''))};
+const newCase=()=>{if(confirm('Erase progress and start a new case?')){localStorage.removeItem(K);mem.s=null;location.reload()}};
+const NEED={drawer:['key','drawer'],d1_2:['card','d12'],d2_3:['ikey','d23'],d4_5:['vpass','d45']};
+function click(id){const n=NEED[id];
+ if(n&&!S.f[n[1]]){if(S.sel==n[0]){fl(n[1],id=='drawer'?'Drawer unlocked':'Door unlocked');toast('Unlocked.');if(id=='drawer')return open(id);return}toast('Locked. It needs something to open it.');return}
+ if(S.sel&&!n){toast('That item does nothing here.')}open(id)}
+function open(id){const m=id.match(/^d(\d)_(\d)$/);
+ if(m){const to=+m[2]-1;if(id=='d3_4'&&!S.f.d34)return mod('Keypad door',paper('<b>RECORDS CHAMBER</b><br>Enter the 4-digit code.')+'<div id=kp></div>',b=>kp(b.querySelector('#kp'),CFG.codes.door3,()=>{fl('d34','Records Chamber unlocked');ev('tape');cl();go(3)}));return go(to)}
+ const F={
+ note:()=>mod('Handwritten note',paper('"Time forgets people, not clocks.<br>The computer opens on the hour the clock gave up.<br>Four digits. 24-hour time. Do not trust the minute hand to be polite."<br>— R.')),
+ clock:()=>mod('Wall clock',`<svg viewBox="0 0 200 200" width=220 style="display:block;margin:auto"><circle cx=100 cy=100 r=92 fill=#e8dcc0 stroke=#4a3520 stroke-width=8 /><path d="M100 100L120 62" stroke=#222 stroke-width=7 /><path d="M100 100L160 100" stroke=#222 stroke-width=4 /><text x=100 y=150 font-size=14 text-anchor=middle fill=#4a3520>PM</text></svg><p>The clock has stopped. A brass plate under it reads PM.</p>`,()=>ev('clock')),
+ photo:()=>mod('Photograph','<div id=d></div>',b=>docv(b.querySelector('#d'),{f:`<svg viewBox="0 0 200 120" width=100%><rect width=200 height=120 fill=#b9ad92 /><circle cx=70 cy=50 r=16 fill=#4a4036 /><rect x=50 y=66 width=40 height=50 fill=#4a4036 /><circle cx=130 cy=54 r=14 fill=#6a5d4d /><rect x=112 y=68 width=36 height=48 fill=#6a5d4d /></svg><p>Two figures. Both faces are cropped out.</p>`,b:'<p>Pencil, on the back:<br>"Print no. <b>4</b>. One of two."</p>',onflip:()=>{ev('photo');S.f.p1=1;sv()}})),
+ pc:()=>S.f.pc?mod('Subject Alpha file',paper('<b>SUBJECT ALPHA</b> <span class=stamp>CONFIDENTIAL</span><br>Alias: the Courier.<br>Badge out: 21:10.<br>Note: Spare key is in the filing cabinet, bottom drawer.'),()=>ev('pcdoc')):mod('Old computer',paper('Terminal locked. Enter the 4-digit access code.')+'<div id=kp></div>',b=>kp(b.querySelector('#kp'),CFG.codes.pc,()=>{fl('pc','Computer unlocked');open('pc')})),
+ cab1:()=>mod('Filing cabinet',paper('Three drawers.')+'<p><button class="b g" onclick="toast(\'Tax forms. Nothing useful.\')">Top</button> <button class="b g" onclick="toast(\'Cold coffee and a cold case.\')">Middle</button> <button class="b" onclick="give(\'key\');fl(\'key\')">Bottom</button></p>'),
+ drawer:()=>mod('Desk drawer',paper('Inside: an archive access card and a small UV lamp.'),()=>{give('card');give('uv');ev('drawer')}),
+ cabA:()=>mod('Cabinet A: Subject Alpha','<div id=d></div>',b=>docv(b.querySelector('#d'),{f:'<b>SUBJECT ALPHA</b> (the Courier)<br><svg viewBox="0 0 120 70" width=120><rect width=120 height=70 fill=#b9ad92 /><circle cx=40 cy=28 r=14 fill=#4a4036 /><rect x=24 y=40 width=32 height=30 fill=#4a4036 /><rect x=28 y=24 width=24 height=6 fill=#111 /></svg><br>Statement: "I never went near the archive."',b:'<p>Filed: <span class=hid>04</span></p><p>Stamped twice. Something was inked here.</p>',onflip:()=>ev('pA'),onuv:()=>{fl('uvA');ev('pA')}})),
+ cabB:()=>mod('Cabinet B: Subject Beta','<div id=d></div>',b=>docv(b.querySelector('#d'),{f:'<b>SUBJECT BETA</b> (the Hare)<br><svg viewBox="0 0 120 70" width=120><rect width=120 height=70 fill=#b9ad92 /><circle cx=60 cy=30 r=13 fill=#6a5d4d /><rect x=48 y=2 width=6 height=18 rx=3 fill=#6a5d4d /><rect x=66 y=2 width=6 height=18 rx=3 fill=#6a5d4d /><rect x=44 y=42 width=32 height=28 fill=#6a5d4d /></svg><br>Statement: "I filed both profiles myself."',b:'<p>Filed: <span class=hid>11</span></p><p>The ink looks faded here.</p>',onflip:()=>ev('pB'),onuv:()=>{fl('uvB');ev('pB')}})),
+ torn:()=>S.f.torn?mod('Torn pages',paper('Reassembled: CABINET C OPENS WITH THE DAY ALPHA WAS FILED, FOLLOWED BY THE DAY BETA WAS FILED.')):mod('Torn pages','<p>Put the strips in order.</p><div id=o></div>',b=>ord(b.querySelector('#o'),[{k:1,h:'CABINET C OPENS'},{k:2,h:'WITH THE DAY ALPHA WAS FILED,'},{k:3,h:'FOLLOWED BY THE DAY'},{k:4,h:'BETA WAS FILED.'}],[1,2,3,4],()=>{fl('torn','Document restored');ev('torn');open('torn')})),
+ cabC:()=>S.f.capC?mod('Cabinet C: Conflicting records',paper('<b>GATE LOG</b><br>Alpha badged into the archive that night.<br>Beta badged out before Alpha did.<br>Ledger no. <b>7</b>.<br><i>The two profiles do not match the two statements.</i>'),()=>{give('ikey');ev('capC')}):mod('Cabinet C',paper('Locked. 4-digit code, in the order the strips say.')+'<div id=kp></div>',b=>kp(b.querySelector('#kp'),CFG.codes.capC,()=>{fl('capC','Cabinet C open');open('cabC')})),
+ mirror:()=>mod('One-way mirror',paper('You see yourself. Scratched into the glass in the corner:<br>"We watched you arrive."'),()=>ev('mirror')),
+ chair1:()=>mod('Chair',paper('Scuffed leather. Initials carved under the seat: R. and B.')),chair2:()=>mod('Chair',paper('Warm, as if someone just left. A hair clip under the seat.')),
+ table:()=>mod('Table',paper('Two statements and a cassette recorder sit on the table.')),
+ stA:()=>stm(),stB:()=>stm(),
+ rec:()=>S.f.st?mod('Cassette recorder',paper('<i>Click. Hiss. Two voices laughing.</i><br>"If you are hearing this, you checked everything. Good."<br>"Side <b>2</b>. And the next door? Our case number."'),()=>ev('tape')):mod('Cassette recorder',paper('The tape is jammed. Finish reviewing the statements first.')),
+ gate:()=>mod('Computers','<p>Compare the logs.</p>'+paper('<b>GATE PC</b><br>Alpha in 22:20<br>Camera 3 off 22:30<br>Sync check: Gate PC 22:40 = wall clock 22:20<br><br><b>WALL LOG</b><br>Beta out 22:15<br>Reel leaves vault 22:40')+'<p>Gate PC is off by <input id=of type=number style="width:70px"> minutes <button class=b id=ok>Apply</button></p>',b=>{b.querySelector('#ok').onclick=()=>{if(b.querySelector('#of').value==20){fl('off','Offset found');ev('off');toast('Gate PC runs 20 minutes fast.')}else bad(b)}}),
+ board:()=>S.f.tl?mod('Timeline',paper('Real order: Alpha in, camera off, Beta out, reel leaves.<br>Tabs in order: <b>3 1 4 2</b>')):mod('Timeline board','<p>Order the events from earliest to latest. Use real times.</p><div id=o></div>',b=>{const t=(s,x)=>`<b>#${s[0]}</b> ${s[1]}<br><small>${s[2]}${S.f.off&&x?' (real '+x+')':''}</small>`;ord(b.querySelector('#o'),[{k:3,h:t([3,'Alpha badges in','22:20 Gate PC'],'22:00')},{k:1,h:t([1,'Camera 3 stops','22:30 Gate PC'],'22:10')},{k:4,h:t([4,'Beta badges out','22:15 Wall log'],'22:15')},{k:2,h:t([2,'Reel leaves vault','22:40 Wall log'],'22:40')}],[3,1,4,2],()=>{fl('tl','Timeline corrected');ev('tl');open('board')})}),
+ map:()=>mod('Map: The Walk',paper('<b>ROUTE</b><br>1. Records Chamber (04)<br>2. Investigation Office (01)<br>3. Evidence Archive (02)<br>4. Interrogation Room (03)<br><i>Four stops. Four digits.</i>'),()=>{S.f.map=1;ev('map');sv()}),
+ mbox:()=>S.f.box?mod('Metal box',paper('Empty. The vault pass was inside.<br>Note: "Four stops, four digits." Digit: <b>9</b>')):mod('Metal box',paper('Locked. 4 digits. Hint: the timeline tabs, earliest first.')+'<div id=kp></div>',b=>kp(b.querySelector('#kp'),CFG.codes.box,()=>{fl('box','Box opened');give('vpass');ev('box');S.f.f4=1;open('mbox')})),
+ drs:()=>mod('Numbered drawers',[1,2,3,4].map(n=>`<p><b>Drawer ${n}</b>: ${[S.f.p1,S.f.capC,S.f.st,S.f.box][n-1]?'Room 0'+n+' kept the digit <b>'+[4,7,2,9][n-1]+'</b>.':'Sealed. Room 0'+n+' has not given up its digit.'}</p>`).join('')),
+ eboard:()=>mod('Evidence board',paper(`<b>The Walk:</b> ${S.f.map?CFG.route.join(' &rarr; '):'(route unknown, check the Records Chamber)'}<br><br>Digits found:<br>Office (01): ${S.f.p1?4:'?'}<br>Archive (02): ${S.f.capC?7:'?'}<br>Interrogation (03): ${S.f.st?2:'?'}<br>Records (04): ${S.f.box?9:'?'}`)),
+ vdoor:()=>S.f.vault?mod('Vault',paper('Open. The black box sits in the dark.')):mod('Vault door',paper('Enter the 4-digit vault password.')+'<div id=kp></div>',b=>kp(b.querySelector('#kp'),CFG.codes.vault,()=>{fl('vault','Vault unlocked');ev('vault');cl()})),
+ bbox:()=>bb()};
+ F[id]&&F[id]()}
+function stm(){const c=[['a1','I left the office at 21:10.'],['a2','I never set foot in the archive.'],['a3','There were two of us in that photograph.'],['b1','I filed my own profile on the 11th.'],['b2','I filed Alpha\'s profile the same day.'],['b3','I was the last one out of the archive.']],tr={a1:1,a3:1,b1:1},mk={};
+ mod('Witness statements',`<p>Alpha says: first three. Beta says: last three. Mark each claim as supported or not by your evidence.</p><div id=cl>`+c.map(([k,t])=>`<div class=cl><span>${t}</span><span><button data-k=${k} data-v=1>Supported</button> <button data-k=${k} data-v=0>Not</button></span></div>`).join('')+'</div><p><button class=b id=go>Submit analysis</button></p>',b=>{
+ b.onclick=e=>{const t=e.target;if(t.dataset.k){mk[t.dataset.k]=+t.dataset.v;t.parentNode.querySelectorAll('button').forEach(x=>x.className='');t.className=t.dataset.v==1?'y':'n'}
+  if(t.id=='go'){const w=c.filter(([k])=>mk[k]===undefined||(mk[k]==1)!=!!tr[k]).length;if(!w){fl('st','Statements verified');ev('mirror');toast('All six verdicts hold up. The recorder is free.');cl()}else{bad(b);toast(w+' verdict(s) wrong or missing.')}}}})}
+let seen={};
+function bb(){seen={};const R=b=>{b.innerHTML=`<p>The box is lined with felt. Three things inside.</p><p><button class="b g" data-i=p>Photograph</button> <button class="b g" data-i=r>Classified report</button> <button class="b g" data-i=u>USB drive</button></p><div id=v></div>${seen.p&&seen.r&&seen.u?'<p><button class=b data-i=go>Plug in the USB</button></p>':''}`;
+ const v=b.querySelector('#v'),i=b.dataset.s;v.innerHTML=i=='p'?paper(`A warm photograph: two silhouettes laughing over a cake.<br>On the back: "Happy birthday, ${S.name}. We hid it well, didn't we?"`):i=='r'?paper(`<b>CLASSIFIED REPORT: FINAL FINDINGS</b><br>Subject Alpha (the Courier) and Subject Beta (the Hare) were never suspects. They were the authors of Case 1106.<br>The missing artifact, the Meridian Reel, is a personal birthday video made for ${S.name}.<br>The contradictions were clues they planted to see how far you would go.`):i=='u'?paper(`Label: "FOR ${S.name.toUpperCase()}. PLAY ME."`):''};
+ mod('The black box','',b=>{R(b);b.onclick=e=>{const k=e.target.dataset.i;if(!k)return;if(k=='go')return fin();seen[k]=1;b.dataset.s=k;R(b)}})}
+function fin(){cl();fl('done','Case closed');const f=document.createElement('div');f.className='fin';
+ f.innerHTML=`<h1>Happy Birthday, ${S.name}.</h1><p>Case 1106 is closed. The artifact was never stolen. It was made for you.</p><video id=vd controls playsinline preload=metadata src="${CFG.VIDEO_PATH}"></video><p id=nv style="display:none">Video not found at "${CFG.VIDEO_PATH}". Set VIDEO_PATH at the top of this file.</p><p><button class=b id=bk>Back to the vault</button></p>`;
+ document.body.append(f);setTimeout(()=>{for(let i=0;i<40;i++){const c=document.createElement('div');c.className='cf';c.textContent=['🎉','✨','🎂','💛'][i%4];c.style.cssText=`left:${Math.random()*100}vw;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*2}s`;document.body.append(c);setTimeout(()=>c.remove(),9000)}},2500);
+ f.querySelector('#vd').onerror=()=>{f.querySelector('#vd').style.display='none';f.querySelector('#nv').style.display='block'};f.querySelector('#bk').onclick=()=>f.remove()}
+// ===== SCREENS =====
+function typeIn(el,lines,cb){let i=0,j=0;const t=setInterval(()=>{if(i>=lines.length){clearInterval(t);cb&&cb();return}j++;el.textContent=lines.slice(0,i).join('\n')+(i?'\n':'')+lines[i].slice(0,j);if(j>=lines[i].length){i++;j=0}},18)}
+function reg(){$('#app').innerHTML='<div class=term><pre id=ty></pre><form id=f style="display:none"><span>&gt; FULL NAME: </span><input id=nm maxlength=32 autocomplete=off required> <button class=b>ENTER</button></form></div>';
+ typeIn($('#ty'),['CLASSIFIED CASE SYSTEM v4.1','CASE 1106: THE LAST UNOPENED FILE','Connection secure. Identity required.',''],()=>{$('#f').style.display='block';$('#nm').focus()});
+ $('#f').onsubmit=e=>{e.preventDefault();const n=$('#nm').value.trim().replace(/[<>&"]/g,'');if(!n)return;let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%9000;
+  S={name:n,id:'INV-'+n.split(/\s+/).map(w=>w[0]).join('').toUpperCase().slice(0,3)+'-'+(h+1000),stage:'card',room:0,inv:[],sel:null,f:{},j:[],h:{}};sv();card()}}
+function card(){$('#app').innerHTML=`<div class=wrap><pre>IDENTITY CONFIRMED. PROFILE GENERATED.</pre><div class=idc><div class=ph>🕵️</div><div><b>COLD CASE UNIT</b><br>Name: ${S.name}<br>ID: ${S.id}<br>Rank: Senior Investigator<br>Clearance: LEVEL 4<br>Assignment: Case 1106</div></div><button class=b id=nx>Open classified briefing</button></div>`;$('#nx').onclick=brief}
+function brief(){S.stage='brief';sv();$('#app').innerHTML=`<div class=wrap><pre>TOP SECRET // CASE 1106 // EYES ONLY</pre><div class=paper><b>To: Investigator ${S.name} (${S.id})</b> <span class=stamp>CLASSIFIED</span>${CFG.brief.map((t,i)=>`<p class=p style="animation-delay:${i*1.2}s">${t}</p>`).join('')}</div><p><button class=b id=bg>Begin the investigation</button></p></div>`;$('#bg').onclick=()=>{S.stage='game';sv();game()}}
+function game(){$('#app').innerHTML='<div id=hud></div><div id=st></div><div id=inv></div>';const st=$('#st');
+ st.onmousemove=e=>{const b=st.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;st.style.setProperty('--mx',x*100+'%');st.style.setProperty('--my',y*100+'%');const s=st.querySelector('svg');if(s)s.style.transform=`translate(${(.5-x)*14}px,${(.5-y)*8}px)`};
+ st.onclick=e=>{const g=e.target.closest('.h');if(g)click(g.dataset.o)};up();if(!S.j.length)toast('Start at the office, as the envelope said.')}
+function boot(){const s=ld();if(s&&s.name){S=s;if(S.stage=='game')return $('#app').innerHTML=`<div class=wrap><pre>WELCOME BACK, ${S.name}.</pre><p>Your investigation is saved.</p><button class=b id=rs>Resume case</button> <button class="b g" onclick="newCase()">New case</button></div>`,$('#rs').onclick=game;if(S.stage=='brief')return brief();if(S.stage=='card')return card()}reg()}
+boot();
+</script></body></html>
